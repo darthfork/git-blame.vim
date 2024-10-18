@@ -7,6 +7,23 @@ Git Blame is a Vim plugin that integrates `git blame` functionality directly int
 - Displays git blame information for the current line in a Vim buffer.
 - Lightweight and efficient with `autoload` functionality to load only when needed.
 
+## Usage
+
+Once installed, you can use the `:GitBlame` command to display the git blame information for the current line in the buffer.
+
+```vim
+:GitBlame
+```
+
+### Recommended usage
+
+Map the function to a shortcut in your `vimrc` for quick peak at the git blame
+
+```vim
+nmap <silent><Leader>g :GitBlame<CR>
+```
+
+
 ## Installation
 
 ### Using [Vundle](https://github.com/VundleVim/Vundle.vim)
@@ -54,10 +71,3 @@ Git Blame is a Vim plugin that integrates `git blame` functionality directly int
     ```
 
 2. Restart Vim.
-
-## Usage
-
-Once installed, you can use the `:GitBlame` command to display the git blame information for the current line in the buffer.
-
-```vim
-:GitBlame

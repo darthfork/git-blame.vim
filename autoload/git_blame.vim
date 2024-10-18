@@ -50,7 +50,8 @@ function! s:show_floating_window(contents)
                 \ 'width': width,
                 \ 'height': height,
                 \ 'style': 'minimal',
-                \ 'border': 'single'
+                \ 'border': 'single',
+                \ 'focusable': v:false
                 \ }
 
     " Open the floating window
@@ -59,14 +60,18 @@ function! s:show_floating_window(contents)
     " Set the filetype to git in the floating window
     call nvim_buf_set_option(buf, 'filetype', 'git')
 
-    " Close the floating window with movement keys
+    " Make the buffer non-modifiable and disable cursorline
+    call nvim_buf_set_option(buf, 'modifiable', v:false)
+    call nvim_win_set_option(win, 'cursorline', v:false)
+
+    " Close the floating window with movement and arrow keys
     call s:map_close_keys(buf, win)
 endfunction
 
 " Function to map movement keys to close the window
 function! s:map_close_keys(buf, win)
     " Define keys that should close the window
-    let keys = ['h', 'j', 'k', 'l', '<Esc>']
+    let keys = ['h', 'j', 'k', 'l', '<Esc>', '<Up>', '<Down>', '<Left>', '<Right>']
 
     " Loop through each key and map it to close the window
     for key in keys
