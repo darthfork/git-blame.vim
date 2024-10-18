@@ -1,0 +1,18 @@
+*git-blame.txt*     Git Blame Plugin Documentation     *git-blame*
+
+==============================================================================
+Git Blame Plugin                                        *GitBlame*
+==============================================================================
+
+Author: Abhishek Rai (mail@raiabhishek.com)
+Version: 1.0
+License: MIT
+Description: This plugin provides an easy way to run `git blame` inside Vim and
+display the blame information for the current line in the buffer.
+
+------------------------------------------------------------------------------
+Commands:                                              *git-blame-commands*
+------------------------------------------------------------------------------
+
+  :GitBlame                     Display blame information for the current line
+                                using the `git blame` command.
