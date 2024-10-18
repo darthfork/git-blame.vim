@@ -19,9 +19,43 @@ function! git_blame#Blame()
     " Call systemlist with the git command
     let blame_output = systemlist(git_command)
 
-    " Display the output in a popup window
-    call setbufvar(
-          \ winbufnr(popup_atcursor(blame_output, {
-          \ 'padding': [1,1,1,1], 'pos': 'botleft', 'wrap': 0 })),
-          \ '&filetype', 'git')
+    " Check if we are in Neovim
+    if exists('*nvim_open_win')
+        " Neovim: use nvim_open_win for floating windows
+        call s:show_floating_window(blame_output)
+    else
+        " Vim: use popup_atcursor for popup windows
+        call setbufvar(
+              \ winbufnr(popup_atcursor(blame_output, {
+              \ 'padding': [1,1,1,1], 'pos': 'botleft', 'wrap': 0 })),
+              \ '&filetype', 'git')
+    endif
+endfunction
+
+" Function to show a floating window in Neovim
+function! s:show_floating_window(contents)
+    " Create a new scratch buffer for the blame output
+    let buf = nvim_create_buf(v:false, v:true)
+
+    " Set the contents of the buffer
+    call nvim_buf_set_lines(buf, 0, -1, v:true, a:contents)
+
+    " Define window settings for the floating window
+    let width = max(map(a:contents, 'strwidth(v:val)')) + 4
+    let height = len(a:contents) + 2
+    let opts = {
+                \ 'relative': 'cursor',
+                \ 'row': 1,
+                \ 'col': 1,
+                \ 'width': width,
+                \ 'height': height,
+                \ 'style': 'minimal',
+                \ 'border': 'single'
+                \ }
+
+    " Open the floating window
+    call nvim_open_win(buf, v:true, opts)
+
+    " Set the filetype to git in the floating window
+    call nvim_buf_set_option(buf, 'filetype', 'git')
 endfunction
