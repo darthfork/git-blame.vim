@@ -16,3 +16,60 @@ Commands:                                              *git-blame-commands*
 
   :GitBlame                     Display blame information for the current line
                                 using the `git blame` command.
+
+------------------------------------------------------------------------------
+Usage:                                                    *git_blame-usage*
+------------------------------------------------------------------------------
+
+Once installed, you can use the `:GitBlame` command to display the git blame information for the current line in the buffer.
+
+:GitBlame
+
+Recommended usage:
+Map the function to a shortcut in your `vimrc` for quick access, such as:
+
+vim:
+
+`nnoremap <leader>gb :GitBlame<CR>`
+
+neovim lua:
+
+`vim.api.nvim_set_keymap('n', '<Leader>g', ':GitBlame<CR>', { silent = true })`
+
+------------------------------------------------------------------------------
+Installation:                                             *git_blame-installation*
+------------------------------------------------------------------------------
+
+1. Install using your preferred Vim plugin manager:
+
+### Using [Vundle](https://github.com/VundleVim/Vundle.vim):
+
+```vim
+Plugin 'yourusername/git_blame'
+```
+
+### Using [Pathogen](https://github.com/tpope/vim-pathogen):
+
+```bash
+git clone https://github.com/yourusername/git_blame ~/.vim/bundle/git_blame
+```
+
+### Using [vim-plug](https://github.com/junegunn/vim-plug):
+
+```vim
+Plug 'yourusername/git_blame'
+```
+
+2. Run `:PlugInstall` or `:PluginInstall` to install the plugin.
+
+------------------------------------------------------------------------------
+Contributing:                                              *git_blame-contributing*
+------------------------------------------------------------------------------
+
+Contributions are welcome! Please open an issue or submit a pull request on the GitHub repository.
+
+------------------------------------------------------------------------------
+License:                                                   *git_blame-license*
+------------------------------------------------------------------------------
+
+This plugin is licensed under the MIT License.

@@ -18,8 +18,16 @@ Once installed, you can use the `:GitBlame` command to display the git blame inf
 
 Map the function to a shortcut in your `vimrc` for quick peak at the git blame
 
+**vim**:
+
 ```vim
 nmap <silent><Leader>g :GitBlame<CR>
+```
+
+**neovim**:
+
+```lua
+vim.api.nvim_set_keymap('n', '<Leader>g', ':GitBlame<CR>', { silent = true })
 ```
 
 ## Preview
